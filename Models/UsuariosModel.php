@@ -9,5 +9,17 @@ class UsuariosModel extends Query {
         $data = $this->select($sql);
         return $data;
     }
+
+    public function getCajas() {
+        $sql = "SELECT * FROM caja WHERE estado = 1";
+        $data = $this->selectAll($sql);
+        return $data;
+    }
+
+    public function getUsuarios() {
+        $sql = "SELECT u.*, c.id AS id_caja, c.caja FROM usuario u INNER JOIN caja c ON u.id_caja = c.id";
+        $data = $this->selectAll($sql);
+        return $data;
+    }
 }
 ?>
